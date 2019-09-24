@@ -12,6 +12,8 @@
 import math,numpy,csv,time,sys,os,pdb
 from opencmiss.iron import iron
 
+path=os.path.dirname(os.path.abspath(__file__))
+
 # Set the number of elements in the mesh
 numberOfSquareElements = 2
 numberOfArmElements = 1
@@ -886,7 +888,7 @@ if (progressDiagnostics):
 # Create CellML equations for the temporal boundary conditions
 bcCellML = iron.CellML()
 bcCellML.CreateStart(bcCellMLUserNumber,fluidRegion)
-bcCellMLIdx = bcCellML.ModelImport("input/poiseuilleinlet.cellml")
+bcCellMLIdx = bcCellML.ModelImport(os.path.join(path,"input/poiseuilleinlet.cellml"))
 bcCellML.VariableSetAsKnown(bcCellMLIdx,"main/pipeRadius")
 bcCellML.VariableSetAsKnown(bcCellMLIdx,"main/length")
 bcCellML.VariableSetAsKnown(bcCellMLIdx,"main/dynamicViscosity")
